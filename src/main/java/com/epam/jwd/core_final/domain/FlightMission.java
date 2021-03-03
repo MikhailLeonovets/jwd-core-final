@@ -1,6 +1,9 @@
 package com.epam.jwd.core_final.domain;
 
-import java.time.LocalDate;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -16,16 +19,72 @@ import java.util.List;
  * from {@link Planet}
  * to {@link Planet}
  */
+@EqualsAndHashCode
+@ToString
 public class FlightMission extends AbstractBaseEntity {
     // todo
-    private String missionName;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private long distance;
-    private Spaceship assignedSpaceShip;
-    private List<CrewMember> assignedCrew;
+    private final String missionName;
+    private final LocalDateTime startDate;
+    private final LocalDateTime endDate;
+    private final int distance;
+    private final Spaceship assignedSpaceShip;
+    private final List<CrewMember> assignedCrew;
     private MissionResult missionResult;
+    private final Planet fromPlanet;
+    private final Planet toPlanet;
 
+    public FlightMission(String missionName, Planet fromPlanet, Planet toPlanet, LocalDateTime startDate,
+                         LocalDateTime endDate, int distance, Spaceship assignedSpaceShip,
+                         List<CrewMember> assignedCrew) {
+        this.missionName = missionName;
+        this.fromPlanet = fromPlanet;
+        this.toPlanet = toPlanet;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.distance = distance;
+        this.assignedSpaceShip = assignedSpaceShip;
+        this.assignedCrew = assignedCrew;
+        this.missionResult = MissionResult.PLANNED;
+    }
 
+    public String getMissionsName() {
+        return missionName;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public Spaceship getAssignedSpaceShip() {
+        return assignedSpaceShip;
+    }
+
+    public List<CrewMember> getAssignedCrew() {
+        return assignedCrew;
+    }
+
+    public MissionResult getMissionResult() {
+        return missionResult;
+    }
+
+    public void setMissionResult(MissionResult missionResult) {
+        this.missionResult = missionResult;
+    }
+
+    public Planet getFrom() {
+        return fromPlanet;
+    }
+
+    public Planet getToPlanet() {
+        return toPlanet;
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.epam.jwd.core_final.domain;
 
+import com.epam.jwd.core_final.util.PropertyReaderUtil;
+
 /**
  * This class should be IMMUTABLE!
  * <p>
@@ -16,12 +18,39 @@ package com.epam.jwd.core_final.domain;
  */
 public class ApplicationProperties {
     //todo
-    private String inputRootDir;
-    private String outputRootDir;
-    private String crewFileName;
-    private String missionsFileName;
-    private String spaceshipsFileName;
-    private int fileRefreshRate;
-    private String dateTimeFormat;
+    private final String inputRootDir = PropertyReaderUtil.loadProperties("inputRootDir");
+    private final String outputRootDir = PropertyReaderUtil.loadProperties("outputRootDir");
+    private final String crewFileName = PropertyReaderUtil.loadProperties("crewFileName");
+    private final String missionsFileName = PropertyReaderUtil.loadProperties("missionsFileName");
+    private final String spaceshipsFileName = PropertyReaderUtil.loadProperties("spaceshipsFileName");
+    private final int fileRefreshRate = Integer.parseInt(PropertyReaderUtil.loadProperties("inputRootDir"));
+    private final String dateTimeFormat = PropertyReaderUtil.loadProperties("dateTimeFormat");
 
+    public String getInputRootDir() {
+        return inputRootDir;
+    }
+
+    public String getOutputRootDir() {
+        return outputRootDir;
+    }
+
+    public String getCrewFileName() {
+        return crewFileName;
+    }
+
+    public String getMissionsFileName() {
+        return missionsFileName;
+    }
+
+    public String getSpaceshipsFileName() {
+        return spaceshipsFileName;
+    }
+
+    public int getFileRefreshRate() {
+        return fileRefreshRate;
+    }
+
+    public String getDateTimeFormat() {
+        return dateTimeFormat;
+    }
 }
